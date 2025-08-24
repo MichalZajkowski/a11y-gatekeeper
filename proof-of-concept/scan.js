@@ -15,12 +15,12 @@ const { AxeBuilder } = require('@axe-core/playwright');
 
   const browser = await chromium.launch();
   
-  // --- ZMIANA 1: Stworzenie kontekstu przeglądarki ---
-  // Zamiast tworzyć stronę bezpośrednio, najpierw tworzymy "kontekst".
-  // Jest to nowa, wymagana przez @axe-core/playwright najlepsza praktyka.
+  // --- CHANGE 1: Create a browser context ---
+  // Instead of creating the page directly, we first create a "context".
+  // This is a new best practice, required by @axe-core/playwright.
   const context = await browser.newContext();
   const page = await context.newPage();
-  // --- Koniec ZMIANY 1 ---
+  // --- End of SHIFT 1 ---
 
   // We will test a demonstration page from W3C known to have accessibility issues.
   // This ensures our PoC will find and report violations.
@@ -56,10 +56,10 @@ const { AxeBuilder } = require('@axe-core/playwright');
 
   console.log('-----------------------------------------');
   
-  // --- ZMIANA 2: Prawidłowe zamknięcie zasobów ---
-  // Zamykamy kontekst przed zamknięciem przeglądarki.
+  // --- CHANGE 2: Properly close resources ---
+  // We close the context before closing the browser.
   await context.close();
-  // --- Koniec ZMIANY 2 ---
+  // --- End of SHIFT 2 ---
   await browser.close();
   console.log('✅ Proof of Concept finished successfully.');
 })();
