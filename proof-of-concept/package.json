@@ -1,5 +1,5 @@
 {
-  "name": "a11y-gatekeeper-poc",
+  "name": "a11y-gatekeeper",
   "version": "0.1.0",
   "description": "A Proof of Concept for the A11y-Gatekeeper project, demonstrating automated accessibility scanning.",
   "main": "scan.js",
